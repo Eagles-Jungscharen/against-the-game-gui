@@ -19,7 +19,7 @@
                 <input matInput [formControl]="codeEditGameControl" />
             </mat-form-field>
             <mat-form-field appearance="fill" *ngIf="showVerification()" class="formField">
-                <mat-label>Verification XXX-XXX-XXX</mat-label>
+                <mat-label>Secure Code XX-XXXXX-XXXX</mat-label>
                 <input matInput [formControl]="codeEditVerificationGameControl" />
             </mat-form-field>
             <mat-form-field appearance="fill" *ngIf="showEMailAddress()" class="formField">
@@ -30,6 +30,7 @@
                 <button [disabled]="cancelButtonDisabled()" mat-button color="accent" (click)="doCancel()">Abbrechen</button>
                 <button [disabled]="newButtonDisabled()" mat-button color="primary" (click)="doNewGame()">Neu</button>
                 <button [disabled]="editButtonDisabled()" mat-button color="accent" (click)="doEditGame()">Bearbeiten</button>
+                <button *ngIf="showRegister()" [disabled]="registerEMailControl.invalid" mat-button color="primary" (click)="doRegisterGame()" [class.spinner]="loadRegister">Registrieren</button>
             </mat-card-actions>
         </mat-card>
     </div>

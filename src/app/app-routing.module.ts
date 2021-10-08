@@ -11,11 +11,11 @@ const routes: Routes = [
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
-    path: 'run',
+    path: 'run/:id',
     component: RunGameComponent,
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     component: EditGameComponent,
   },
 ];

@@ -1,1 +1,38 @@
-<p>edit-game works!</p>
+<div class="mainBox">
+    <div class="mat-elevation-z6 centerBox">
+        <mat-card *ngIf="loaded" class="mat-elevation-z6 gameBox">
+            <mat-card-title>Spiel</mat-card-title>
+            <mat-card-subtitle>{{ game.number }}</mat-card-subtitle>
+            <mat-card-content class="gameBoxContent" [formGroup]="fgGame">
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="nameControl" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Namen des Spielerteams</mat-label>
+                    <input matInput formControlName="playerTeamNameControl" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Namen des Computerteams</mat-label>
+                    <input matInput formControlName="computerTeamNameControl" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Punkte pro Aufgabe</mat-label>
+                    <input matInput formControlName="taskPointsControl" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Startpunkte Spieler</mat-label>
+                    <input matInput formControlName="playerTeamPointsControl" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Startpunkte Computer</mat-label>
+                    <input matInput formControlName="computerTeamPointsControl" />
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions><button mat-stroked-button color="primary" [disabled]="fgGame.invalid" (click)="save()">Speichern</button></mat-card-actions>
+        </mat-card>
+        <mat-card *ngIf="loaded">
+            <mat-card-title>Aufgaben:</mat-card-title>
+        </mat-card>
+    </div>
+</div>
