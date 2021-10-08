@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Game } from '../models/game';
+import { TaskElement } from '../models/task-element';
 import { GameService } from '../services/game.service';
+import { MassTaskDialogComponent } from './mass-task-dialog/mass-task-dialog.component';
 
 @Component({
   selector: 'app-edit-game',
@@ -12,6 +16,8 @@ import { GameService } from '../services/game.service';
 export class EditGameComponent implements OnInit {
   game!: Game;
   loaded = false;
+  displayedColumns = ['no', 'name', 'action'];
+  dataSource = new MatTableDataSource<TaskElement>();
   fgGame = new FormGroup({
     nameControl: new FormControl('', Validators.required),
     playerTeamNameControl: new FormControl('', Validators.required),
@@ -19,9 +25,10 @@ export class EditGameComponent implements OnInit {
     taskPointsControl: new FormControl(),
     playerTeamPointsControl: new FormControl(),
     computerTeamPointsControl: new FormControl(),
+    intervalControl: new FormControl('', [Validators.required, Validators.min(10)]),
   });
 
-  constructor(private activatedRoute: ActivatedRoute, private gameService: GameService, private router: Router) {}
+  constructor(private activatedRoute: ActivatedRoute, private gameService: GameService, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
@@ -46,11 +53,17 @@ export class EditGameComponent implements OnInit {
     this.game.playerTeamName = this.fgGame.get('playerTeamNameControl')?.value;
     this.game.playerTeamPoints = this.fgGame.get('playerTeamPointsControl')?.value;
     this.game.taskPoints = this.fgGame.get('taskPointsControl')?.value;
+    this.game.interval = this.fgGame.get('intervalControl')?.value;
     this.gameService.saveGame(this.game).subscribe((game) => {
       this.game = game;
       this.loaded = true;
       this.applyModel;
     });
+  }
+  createTask() {}
+  createMultiTask() {
+    const ref = this.dialog.open(MassTaskDialogComponent, { width: '350px' });
+    ref.afterClosed().subscribe((result) => {});
   }
 
   private applyModel() {
@@ -62,6 +75,7 @@ export class EditGameComponent implements OnInit {
         taskPointsControl: this.game.taskPoints,
         playerTeamPointsControl: this.game.playerTeamPoints,
         computerTeamPointsControl: this.game.computerTeamPoints,
+        intervalControl: this.game.interval,
       },
       { emitEvent: false }
     );
