@@ -21,8 +21,8 @@ export interface MassTaskEvent {
 export class MassTaskDialogComponent implements OnInit {
   fgMassCreation = new FormGroup({
     count: new FormControl(10, [Validators.required, Validators.min(1)]),
-    prefix: new FormControl(),
-    postfix: new FormControl(),
+    prefix: new FormControl(''),
+    postfix: new FormControl(''),
   });
   constructor(public dialogRef: MatDialogRef<Component>) {}
 
