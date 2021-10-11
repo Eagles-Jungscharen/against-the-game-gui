@@ -1,21 +1,27 @@
 <div class="mainBox">
-    <div class="mat-elevation-z6 centerBox">
-        <div class="taskBox">
-            <div>AUFGABEN</div>
-            <div class="taskPile">
-                <div>Neue Aufgaben</div>
-                <div>In Arbeit</div>
+    <div class="centerPanel" *ngIf="runGame">
+        <div class="centerPanelTitle">{{ runGame.game.name }}</div>
+        <div class="mat-elevation-z6 centerBox">
+            <div class="taskBox">
+                <div>AUFGABEN</div>
+                <div class="taskPile">
+                    <div>Neue Aufgaben</div>
+                    <div>In Arbeit</div>
+                </div>
+            </div>
+            <div class="playField">
+                <div class="playFieldPlayer">
+                    <div class="pointLine">PUNKTE: {{ runGame.currentPointsPlayer }}</div>
+                    <div class="titleLine">{{ runGame.game.playerTeamName }}</div>
+                </div>
+                <div class="playFieldComputer">
+                    <div class="titleLine">{{ runGame.game.computerTeamName }}</div>
+                    <div class="pointLine">PUNKTE: {{ runGame.currentPointsComputer }}</div>
+                </div>
             </div>
         </div>
-        <div class="playField">
-            <div class="playFieldPlayer">
-                <div class="pointLine">PUNKTE: 101892</div>
-                <div class="titleLine">PLAYER</div>
-            </div>
-            <div class="playFieldComputer">
-                <div class="titleLine">COMPUTER</div>
-                <div class="pointLine">PUNKTE: 92820</div>
-            </div>
+        <div>
+            <button mat-icon-button (click)="startGame()"><mat-icon>play_circle_outline</mat-icon></button>
         </div>
     </div>
 </div>

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Game } from '../models/game';
+import { RunGame } from '../models/run-game';
 import { TaskElement } from '../models/task-element';
 
 @Injectable({
@@ -29,5 +30,12 @@ export class GameService {
   }
   getTaskElements(id: string): Observable<TaskElement[]> {
     return this.httpClient.get<TaskElement[]>(environment.apiURL + '/api/taskelements?gameId=' + id);
+  }
+  statusRunGame(id: string): Observable<RunGame> {
+    return this.httpClient.post<RunGame>(environment.apiURL + '/api/game/' + id + '/run?action=status', {});
+  }
+  startRunGame(id: string): Observable<RunGame> {
+    const runnerClientId = localStorage.getItem('CLIENT_ID') + '';
+    return this.httpClient.post<RunGame>(environment.apiURL + '/api/game/' + id + '/run?action=start', {}, { headers: new HttpHeaders({ runnerClientId: runnerClientId }) });
   }
 }

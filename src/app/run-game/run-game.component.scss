@@ -74,3 +74,16 @@
     justify-content: space-between;
     width: 100%;
 }
+
+.centerPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.centerPanelTitle {
+    align-self: center;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+}
