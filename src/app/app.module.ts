@@ -21,9 +21,10 @@ import { LoginGameComponent } from './login-game/login-game.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MassTaskDialogComponent } from './edit-game/mass-task-dialog/mass-task-dialog.component';
 import { EditTaskDialogComponent } from './edit-game/edit-task-dialog/edit-task-dialog.component';
+import { TaskElementComponent } from './run-game/task-element/task-element.component';
 
 @NgModule({
-  declarations: [AppComponent, RunGameComponent, EditGameComponent, LoginGameComponent, MassTaskDialogComponent, EditTaskDialogComponent],
+  declarations: [AppComponent, RunGameComponent, EditGameComponent, LoginGameComponent, MassTaskDialogComponent, EditTaskDialogComponent, TaskElementComponent],
   imports: [BrowserModule, ReactiveFormsModule, AppRoutingModule, BrowserAnimationsModule, MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatToolbarModule, MatIconModule, MatTableModule, MatDialogModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

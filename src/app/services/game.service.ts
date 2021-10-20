@@ -38,4 +38,24 @@ export class GameService {
     const runnerClientId = localStorage.getItem('CLIENT_ID') + '';
     return this.httpClient.post<RunGame>(environment.apiURL + '/api/game/' + id + '/run?action=start', {}, { headers: new HttpHeaders({ runnerClientId: runnerClientId }) });
   }
+  assignTask(id: string, taskId: string): Observable<RunGame> {
+    const runnerClientId = localStorage.getItem('CLIENT_ID') + '';
+    return this.httpClient.post<RunGame>(environment.apiURL + '/api/game/' + id + '/run?action=assignTask', { taskId: taskId }, { headers: new HttpHeaders({ runnerClientId: runnerClientId }) });
+  }
+  completeTask(id: string, taskId: string): Observable<RunGame> {
+    const runnerClientId = localStorage.getItem('CLIENT_ID') + '';
+    return this.httpClient.post<RunGame>(environment.apiURL + '/api/game/' + id + '/run?action=completeTask', { taskId: taskId }, { headers: new HttpHeaders({ runnerClientId: runnerClientId }) });
+  }
+  endRunGame(id: string): Observable<RunGame> {
+    const runnerClientId = localStorage.getItem('CLIENT_ID') + '';
+    return this.httpClient.post<RunGame>(environment.apiURL + '/api/game/' + id + '/run?action=end', {}, { headers: new HttpHeaders({ runnerClientId: runnerClientId }) });
+  }
+  resetRunGame(id: string): Observable<RunGame> {
+    const runnerClientId = localStorage.getItem('CLIENT_ID') + '';
+    return this.httpClient.post<RunGame>(environment.apiURL + '/api/game/' + id + '/run?action=reset', {}, { headers: new HttpHeaders({ runnerClientId: runnerClientId }) });
+  }
+  pauseRunGame(id: string): Observable<RunGame> {
+    const runnerClientId = localStorage.getItem('CLIENT_ID') + '';
+    return this.httpClient.post<RunGame>(environment.apiURL + '/api/game/' + id + '/run?action=pause', {}, { headers: new HttpHeaders({ runnerClientId: runnerClientId }) });
+  }
 }

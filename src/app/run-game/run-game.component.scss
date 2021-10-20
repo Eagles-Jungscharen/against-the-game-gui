@@ -18,7 +18,7 @@
 }
 
 .taskBox {
-    width: 400px;
+    width: 600px;
     margin: 10px;
 }
 
@@ -75,6 +75,35 @@
     width: 100%;
 }
 
+.newPileContainer {
+    width: 300px;
+    overflow: scroll;
+    height: 750px;
+}
+
+.newPile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-right: 5px;
+}
+
+.atworkPileContainer {
+    width: 300px;
+    overflow-x: scroll;
+    height: 750px;
+}
+
+.atworkPile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 300px;
+    padding-left: 5px;
+    overflow-x: scroll;
+    height: 100%;
+}
+
 .centerPanel {
     display: flex;
     flex-direction: column;
@@ -86,4 +115,10 @@
     font-size: 32px;
     font-weight: 700;
     line-height: 40px;
+}
+
+.actionBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }

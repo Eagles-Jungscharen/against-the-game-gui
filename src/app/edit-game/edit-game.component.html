@@ -32,6 +32,10 @@
                     <mat-label>Interval für das Erscheinen der Tasks (Sekunden)</mat-label>
                     <input matInput formControlName="intervalControl" />
                 </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Maximale Dauer zur Erledigung des Tasks (Minuten)</mat-label>
+                    <input matInput formControlName="durationControl" />
+                </mat-form-field>
             </mat-card-content>
             <mat-card-actions class="gameActions"><button mat-stroked-button color="primary" [disabled]="disabledSaveMeta()" (click)="save()">Speichern</button><button mat-stroked-button color="default" (click)="doJoinGame()">Spiel öffnen</button></mat-card-actions>
         </mat-card>

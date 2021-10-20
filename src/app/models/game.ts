@@ -10,5 +10,6 @@ export class Game {
   playerTeamPoints!: number;
   computerTeamPoints!: number;
   interval!: number;
+  taskDuration!: number;
   tasks!: TaskElement[];
 }

@@ -29,6 +29,7 @@ export class EditGameComponent implements OnInit {
     playerTeamPointsControl: new FormControl(),
     computerTeamPointsControl: new FormControl(),
     intervalControl: new FormControl('', [Validators.required, Validators.min(10)]),
+    durationControl: new FormControl(1, [Validators.required, Validators.min(1)]),
   });
 
   constructor(private activatedRoute: ActivatedRoute, private gameService: GameService, private router: Router, private dialog: MatDialog) {}
@@ -61,6 +62,7 @@ export class EditGameComponent implements OnInit {
     this.game.playerTeamPoints = this.fgGame.get('playerTeamPointsControl')?.value;
     this.game.taskPoints = this.fgGame.get('taskPointsControl')?.value;
     this.game.interval = this.fgGame.get('intervalControl')?.value;
+    this.game.taskDuration = this.fgGame.get('durationControl')?.value;
     this.gameService.saveGame(this.game).subscribe((game) => {
       this.game = game;
       this.loaded = true;
@@ -110,6 +112,7 @@ export class EditGameComponent implements OnInit {
         playerTeamPointsControl: this.game.playerTeamPoints,
         computerTeamPointsControl: this.game.computerTeamPoints,
         intervalControl: this.game.interval,
+        durationControl: this.game.taskDuration,
       },
       { emitEvent: false, onlySelf: true }
     );
