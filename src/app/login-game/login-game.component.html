@@ -1,0 +1,37 @@
+<div class="mainBoxLogin">
+    <div class="centerBoxLogin">
+        <mat-card class="mat-elevation-z8 loginBox">
+            <mat-card-title>An einem Spiel teilnehmen</mat-card-title>
+            <mat-card-subtitle>Bitte den Spiel Code eingeben</mat-card-subtitle>
+            <mat-form-field appearance="fill" class="formField">
+                <mat-label>Code XXX-XXX-XXX</mat-label>
+                <input matInput [formControl]="codeJoinGameControl" style="width: 100%" />
+            </mat-form-field>
+            <mat-card-actions>
+                <button [disabled]="startButtonDisabled()" mat-button color="primary" (click)="doJoinGame()">Start</button>
+            </mat-card-actions>
+        </mat-card>
+        <mat-card class="mat-elevation-z8 loginBox">
+            <mat-card-title>Ein Spiel bearbeiten oder erstellen</mat-card-title>
+            <mat-card-subtitle>Hier kannst du dein Spiel erstellen oder bearbeiten</mat-card-subtitle>
+            <mat-form-field appearance="fill" *ngIf="showEditButton()" class="formField">
+                <mat-label>Code XXX-XXX-XXX</mat-label>
+                <input matInput [formControl]="codeEditGameControl" />
+            </mat-form-field>
+            <mat-form-field appearance="fill" *ngIf="showVerification()" class="formField">
+                <mat-label>Secure Code XX-XXXXX-XXXX</mat-label>
+                <input matInput [formControl]="codeEditVerificationGameControl" />
+            </mat-form-field>
+            <mat-form-field appearance="fill" *ngIf="showEMailAddress()" class="formField">
+                <mat-label>Deine E-Mail Adresse</mat-label>
+                <input matInput [formControl]="registerEMailControl" />
+            </mat-form-field>
+            <mat-card-actions align="end">
+                <button [disabled]="cancelButtonDisabled()" mat-button color="accent" (click)="doCancel()">Abbrechen</button>
+                <button [disabled]="newButtonDisabled()" mat-button color="primary" (click)="doNewGame()">Neu</button>
+                <button [disabled]="editButtonDisabled()" mat-button color="accent" (click)="doEditGame()">Bearbeiten</button>
+                <button *ngIf="showRegister()" [disabled]="registerEMailControl.invalid" mat-button color="primary" (click)="doRegisterGame()" [class.spinner]="loadRegister">Registrieren</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

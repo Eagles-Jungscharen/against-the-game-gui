@@ -1,0 +1,44 @@
+<div class="mainBox">
+    <div class="centerPanel" *ngIf="runGame">
+        <div class="centerPanelTitle">{{ runGame.game.name }}</div>
+        <div class="actionBar">
+            <button mat-icon-button (click)="startGame()" [disabled]="disableStartButton()"><mat-icon>play_circle</mat-icon></button>
+            <button mat-icon-button (click)="pauseGame()" [disabled]="disableStopButton()"><mat-icon>pause</mat-icon></button>
+            <button mat-icon-button (click)="endGame()" [disabled]="disableStopButton()"><mat-icon>stop</mat-icon></button>
+            <button mat-icon-button (click)="resetGame()" [disabled]="disableResetButton()"><mat-icon>restart_alt</mat-icon></button>
+        </div>
+        <div class="mat-elevation-z6 centerBox">
+            <div class="taskBox" *ngIf="!isLostOrWon()">
+                <div>AUFGABEN</div>
+                <div class="taskPile">
+                    <div class="newPileContainer">
+                        <div class="newPile">
+                            <div>Neue Aufgaben</div>
+                            <app-task-element *ngFor="let task of openTasks" [task]="task" (onAction)="processAction($event)"></app-task-element>
+                        </div>
+                    </div>
+                    <div class="atworkPileContainer">
+                        <div class="atworkPile">
+                            <div>In Arbeit</div>
+                            <app-task-element *ngFor="let task of atworkTasks" [task]="task" (onAction)="processAction($event)"></app-task-element>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="isLostOrWon()">
+                <h3>Das Spiel ist beendet!</h3>
+                <p>{{ theWinnerIs() }}</p>
+            </div>
+            <div class="playField">
+                <div class="playFieldPlayer">
+                    <div class="pointLine">PUNKTE: {{ runGame.currentPointsPlayer }}</div>
+                    <div class="titleLine">{{ runGame.game.playerTeamName }}</div>
+                </div>
+                <div class="playFieldComputer">
+                    <div class="titleLine">{{ runGame.game.computerTeamName }}</div>
+                    <div class="pointLine">PUNKTE: {{ runGame.currentPointsComputer }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

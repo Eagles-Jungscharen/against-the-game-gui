@@ -1,0 +1,10 @@
+.editTaskContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.editTaskActions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

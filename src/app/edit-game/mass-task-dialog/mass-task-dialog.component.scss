@@ -1,0 +1,10 @@
+.massContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.massActions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
