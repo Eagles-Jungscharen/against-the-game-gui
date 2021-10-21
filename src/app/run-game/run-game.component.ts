@@ -44,7 +44,9 @@ export class RunGameComponent implements OnInit, OnDestroy {
     }
   }
   endGame() {
-    this.gameService.endRunGame(this.runGame.id).subscribe((result) => this.buildModel(result));
+    if (confirm('Achtung das Stoppen des Spiels, beendet es. Ein Forsetzen ist danach nicht mehr möglich')) {
+      this.gameService.endRunGame(this.runGame.id).subscribe((result) => this.buildModel(result));
+    }
   }
   pauseGame() {
     this.gameService.pauseRunGame(this.runGame.id).subscribe((result) => this.buildModel(result));
@@ -52,6 +54,7 @@ export class RunGameComponent implements OnInit, OnDestroy {
 
   buildModel(runGame: RunGame): void {
     this.runGame = runGame;
+    this.runGame.tasks = this.runGame.tasks || [];
     this.openTasks = runGame.tasks.filter((task) => task.status === 'running');
     this.atworkTasks = runGame.tasks.filter((task) => task.status === 'assigned');
   }

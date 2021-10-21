@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { RunGameComponent } from './run-game/run-game.component';
 import { EditGameComponent } from './edit-game/edit-game.component';
@@ -25,7 +26,22 @@ import { TaskElementComponent } from './run-game/task-element/task-element.compo
 
 @NgModule({
   declarations: [AppComponent, RunGameComponent, EditGameComponent, LoginGameComponent, MassTaskDialogComponent, EditTaskDialogComponent, TaskElementComponent],
-  imports: [BrowserModule, ReactiveFormsModule, AppRoutingModule, BrowserAnimationsModule, MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatToolbarModule, MatIconModule, MatTableModule, MatDialogModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatTableModule,
+    MatDialogModule,
+    MatProgressBarModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
