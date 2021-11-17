@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-title>Task {{ getTaskOperationName() }}</mat-card-title>
+    <mat-card-content class="editTaskContent" [formGroup]="fgTask">
+        <mat-form-field appearance="fill">
+            <mat-label>Task Nummer</mat-label>
+            <input matInput type="number" formControlName="no" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Task Name</mat-label>
+            <input matInput formControlName="name" />
+        </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions class="editTaskActions"><button mat-stroked-button (click)="cancel()">Abbruch</button><button mat-stroked-button (click)="create()" color="primary" [disabled]="fgTask.invalid">{{ getTaskOperationName() }}</button></mat-card-actions>
+</mat-card>

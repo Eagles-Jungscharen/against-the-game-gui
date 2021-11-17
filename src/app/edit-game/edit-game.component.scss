@@ -1,0 +1,69 @@
+.centerBox {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+}
+
+.mainBox {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    /*centers items on the line (the x-axis by default)*/
+    align-items: flex-start;
+    /*centers items on the cross-axis (y by default)*/
+}
+
+.gameBox {
+    width: 400px;
+    margin: 5px;
+}
+
+.gameBoxContent {
+    display: flex;
+    flex-direction: column;
+    min-height: 440px;
+}
+
+.taskBox {
+    width: 600px;
+    margin: 5px;
+}
+
+.taskTable {
+    width: 100%;
+}
+
+.taskTableNoCell {
+    width: 40px;
+}
+
+.taskTableActionCell {
+    width: 60px;
+}
+
+.taskContainer {
+    overflow: scroll;
+    height: 450px;
+    scrollbar-width: auto;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.gameActions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

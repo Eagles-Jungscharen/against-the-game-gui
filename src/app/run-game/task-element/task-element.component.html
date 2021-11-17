@@ -1,0 +1,5 @@
+<mat-card class="taskElement">
+    <mat-card-content class="taskContent">{{ getTitle() }}</mat-card-content>
+    <mat-progress-bar [value]="progressStatus()"></mat-progress-bar>
+    <mat-card-actions><button *ngIf="showAssign()" mat-stroked-button (click)="assignTask()">Übernehmen</button><button *ngIf="showCompleted()" mat-stroked-button (click)="completeTask()">Erledigt</button> </mat-card-actions>
+</mat-card>
