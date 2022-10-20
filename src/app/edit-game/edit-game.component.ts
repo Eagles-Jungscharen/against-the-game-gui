@@ -1,6 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -21,15 +21,15 @@ export class EditGameComponent implements OnInit {
   displayedColumns = ['no', 'name', 'action'];
   dataSource = new MatTableDataSource<TaskElement>();
   taskElements: TaskElement[] = [];
-  fgGame = new FormGroup({
-    nameControl: new FormControl('', Validators.required),
-    playerTeamNameControl: new FormControl('', Validators.required),
-    computerTeamNameControl: new FormControl(),
-    taskPointsControl: new FormControl(),
-    playerTeamPointsControl: new FormControl(),
-    computerTeamPointsControl: new FormControl(),
-    intervalControl: new FormControl('', [Validators.required, Validators.min(10)]),
-    durationControl: new FormControl(1, [Validators.required, Validators.min(1)]),
+  fgGame = new UntypedFormGroup({
+    nameControl: new UntypedFormControl('', Validators.required),
+    playerTeamNameControl: new UntypedFormControl('', Validators.required),
+    computerTeamNameControl: new UntypedFormControl(),
+    taskPointsControl: new UntypedFormControl(),
+    playerTeamPointsControl: new UntypedFormControl(),
+    computerTeamPointsControl: new UntypedFormControl(),
+    intervalControl: new UntypedFormControl('', [Validators.required, Validators.min(10)]),
+    durationControl: new UntypedFormControl(1, [Validators.required, Validators.min(1)]),
   });
 
   constructor(private activatedRoute: ActivatedRoute, private gameService: GameService, private router: Router, private dialog: MatDialog) {}

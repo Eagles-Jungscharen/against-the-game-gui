@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TaskElement } from 'src/app/models/task-element';
 
@@ -19,9 +19,9 @@ export interface TaskEditEvent {
 })
 export class EditTaskDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<Component>, @Inject(MAT_DIALOG_DATA) public task: TaskElement) {}
-  fgTask = new FormGroup({
-    no: new FormControl(10, [Validators.required, Validators.min(1)]),
-    name: new FormControl('', Validators.required),
+  fgTask = new UntypedFormGroup({
+    no: new UntypedFormControl(10, [Validators.required, Validators.min(1)]),
+    name: new UntypedFormControl('', Validators.required),
   });
 
   ngOnInit(): void {

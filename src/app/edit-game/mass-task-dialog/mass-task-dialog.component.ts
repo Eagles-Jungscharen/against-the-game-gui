@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 export enum MassTaskEventType {
@@ -19,10 +19,10 @@ export interface MassTaskEvent {
   styleUrls: ['./mass-task-dialog.component.scss'],
 })
 export class MassTaskDialogComponent implements OnInit {
-  fgMassCreation = new FormGroup({
-    count: new FormControl(10, [Validators.required, Validators.min(1)]),
-    prefix: new FormControl(''),
-    postfix: new FormControl(''),
+  fgMassCreation = new UntypedFormGroup({
+    count: new UntypedFormControl(10, [Validators.required, Validators.min(1)]),
+    prefix: new UntypedFormControl(''),
+    postfix: new UntypedFormControl(''),
   });
   constructor(public dialogRef: MatDialogRef<Component>) {}
 

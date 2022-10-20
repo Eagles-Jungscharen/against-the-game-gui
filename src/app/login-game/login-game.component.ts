@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 
@@ -18,10 +18,10 @@ enum LoginStatus {
 export class LoginGameComponent implements OnInit {
   private status: LoginStatus = LoginStatus.START;
   loadRegister = false;
-  codeJoinGameControl = new FormControl('', checkCodeFormat());
-  codeEditGameControl = new FormControl('', checkCodeFormat());
-  codeEditVerificationGameControl = new FormControl('', checkSecureFormat());
-  registerEMailControl = new FormControl('', [Validators.required, Validators.email]);
+  codeJoinGameControl = new UntypedFormControl('', checkCodeFormat());
+  codeEditGameControl = new UntypedFormControl('', checkCodeFormat());
+  codeEditVerificationGameControl = new UntypedFormControl('', checkSecureFormat());
+  registerEMailControl = new UntypedFormControl('', [Validators.required, Validators.email]);
 
   constructor(private loginService: LoginService, private router: Router) {}
 
